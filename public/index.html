@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>RapiDoc</title>
+</head>
+
+<body>
+
+  <rapi-doc
+    id = "thedoc"
+    spec-url = ""
+    render-style = "read"
+  > </rapi-doc>
+
+<script type="text/javascript" src="rapidoc-min.js"></script></body>
+<script>
+
+function parseHashParams() {
+  let params = new URLSearchParams(location.hash.substring(1));
+  if (params.has('spec-url')) {
+    thedoc.setAttribute('spec-url', params.get('spec-url'));
+  }
+}
+
+window.addEventListener('hashchange', parseHashParams);
+
+parseHashParams();
+</script>
+</html>
