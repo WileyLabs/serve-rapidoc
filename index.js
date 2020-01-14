@@ -41,6 +41,10 @@ app.use(express.static(argv.directory))
 
 app.listen(argv.port)
 
+process.on('SIGINT', function() {
+  process.exit();
+})
+
 console.info(`Visit http://localhost:${argv.port}/`);
 console.info(`Serving spec files from ${argv.directory}\n`);
 
