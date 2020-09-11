@@ -11,7 +11,7 @@ localhost URL) into RapiDoc.
 ## Usage
 
 ```
-$ npm i -g serve-rapidoc
+$ npm i -g WileyLabs/serve-rapidoc
 $ serve-rapidoc
 ```
 
