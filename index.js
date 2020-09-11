@@ -8,8 +8,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const express = require('express')
-const app = express()
+const express = require('express');
+const globby = require('globby');
+
+const app = express();
 app.set('view engine', 'mustache');
 
 const argv = require('yargs')
@@ -48,11 +50,7 @@ process.on('SIGINT', function() {
 console.info(`Visit http://localhost:${argv.port}/`);
 console.info(`Serving spec files from ${argv.directory}\n`);
 
-fs.readdir(argv.directory, (err, files) => {
-  if (err) console.error(err);
-  files.forEach((file) => {
-    if (path.extname(file) === '.yaml') {
-      console.info(`    http://localhost:${argv.port}/#spec-url=${file}`);
-    }
-  });
+const paths = globby.sync(['**/*.yaml']);
+paths.forEach((filename) => {
+  console.log(`    http://localhost:${argv.port}/#spec-url=${filename}`);
 });
