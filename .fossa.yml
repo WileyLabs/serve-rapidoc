@@ -1,0 +1,5 @@
+version: 3
+project:
+  id: serve-rapidoc
+  team: WileyLabs
+  url: https://github.com/WileyLabs/serve-rapidoc
