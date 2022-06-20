@@ -5,16 +5,21 @@
  * @license MIT
  **/
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const express = require('express');
-const globby = require('globby');
+import express from 'express';
+import { globbySync } from 'globby';
+import yargs from 'yargs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.set('view engine', 'mustache');
 
-const argv = require('yargs')
+const argv = yargs()
   .scriptName('serve-rapidoc')
   .usage('$0 [directory] [args]', 'Serve RapiDoc', (yargs) => {
     yargs.positional('directory', {
@@ -50,7 +55,7 @@ process.on('SIGINT', function() {
 console.info(`Visit http://localhost:${argv.port}/`);
 console.info(`Serving spec files from ${argv.directory}\n`);
 
-const paths = globby.sync(['**/*.yaml']);
+const paths = globbySync(['**/*.yaml']);
 paths.forEach((filename) => {
   console.log(`    http://localhost:${argv.port}/#spec-url=${filename}`);
 });

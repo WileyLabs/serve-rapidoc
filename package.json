@@ -2,6 +2,7 @@
   "name": "serve-rapidoc",
   "version": "0.0.1",
   "description": "Serve RapiDoc from any directory",
+  "type": "module",
   "main": "index.js",
   "bin": "./index.js",
   "scripts": {
@@ -21,11 +22,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
-    "globby": "^11.0.1",
-    "mustache": "^4.0.1",
-    "mustache-express": "^1.3.0",
-    "rapidoc": "^8.2.0",
-    "yargs": "^16.0.3"
+    "express": "^4.18.1",
+    "globby": "^13.1.2",
+    "mustache": "^4.2.0",
+    "mustache-express": "^1.3.2",
+    "rapidoc": "^9.3.2",
+    "yargs": "^17.5.1"
   }
 }
